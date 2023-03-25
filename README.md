@@ -1,55 +1,66 @@
-# Sample Web System
+# 会員限定ブログ投稿システム
 
-## Overview
-This is a sample web system that allows authenticated users to create and publish blog posts. The system is built using the following technologies:
-- Java (Spring Boot) for the backend
-- React for the frontend
-- Amazon Web Services (AWS) for hosting and infrastructure
-- DynamoDB for database storage
-- AWS Lambda for serverless processing
-- Amazon API Gateway for the REST API
-- AWS CloudFormation for infrastructure deployment
-- Jenkins for continuous integration and delivery (CI/CD)
-- Single sign-on (SSO) using AWS Cognito
+## 概要
 
-## System Architecture
-![architecture-diagram](https://user-images.githubusercontent.com/123456789/123456789/architecture-diagram.png)
+会員限定のブログ投稿システムです。会員登録することで記事の閲覧と投稿ができます。
 
-The web system architecture is as follows:
+## 機能
 
-- The frontend is a single-page application built with React.
-- The backend is built with Java using the Spring Boot framework.
-- The backend is deployed as a set of Docker containers in a Kubernetes cluster hosted on Amazon Elastic Kubernetes Service (EKS).
-- User authentication and authorization are implemented using AWS Cognito.
-- User profile data is stored in DynamoDB.
-- Blog posts are stored in DynamoDB and are processed asynchronously using AWS Lambda functions triggered by DynamoDB Streams.
-- The REST API is exposed through Amazon API Gateway.
-- Infrastructure is provisioned and deployed using AWS CloudFormation.
-- Continuous integration and delivery are handled using Jenkins.
+- 会員登録機能
+- ログイン機能
+- 記事閲覧機能
+- 記事投稿機能
+- 記事編集機能
+- 記事削除機能
 
-## Prerequisites
-- Java 11
-- Node.js
-- Docker
-- Kubernetes
-- Amazon Web Services account
+## 技術スタック
 
-## Setup
-To set up the system, follow these steps:
+- Java 17
+- Spring Boot 2.6.3
+- Spring Security
+- Thymeleaf
+- PostgreSQL
+- Maven
+- Git
 
-1. Clone this repository.
-2. Create an Amazon EKS cluster using the CloudFormation template provided in the `infrastructure` folder.
-3. Deploy the backend to the EKS cluster using the Kubernetes deployment YAML files in the `backend/kubernetes` folder.
-4. Create a DynamoDB table for user profile data.
-5. Create a DynamoDB table for blog post data and set up a Lambda function to process the data.
-6. Create a Cognito user pool and connect it to the REST API through API Gateway.
-7. Deploy the frontend to a static website hosting service such as Amazon S3.
+## ディレクトリ構成
+```
+├── src
+│ ├── main
+│ │ ├── java
+│ │ │ └── com.example.blog
+│ │ │ ├── controller
+│ │ │ ├── model
+│ │ │ ├── repository
+│ │ │ ├── security
+│ │ │ └── service
+│ │ ├── resources
+│ │ │ ├── static
+│ │ │ └── templates
+│ │ └── webapp
+│ │ └── WEB-INF
+│ └── test
+│ └── java
+│ └── com.example.blog
+│ ├── controller
+│ ├── model
+│ ├── repository
+│ ├── security
+│ └── service
+└── pom.xml
+```
+- `src/main/java/com.example.blog`: Javaソースコード
+  - `controller`: リクエストを受け取り、レスポンスを返すコントローラークラス
+  - `model`: データモデルのクラス
+  - `repository`: データアクセスのためのリポジトリクラス
+  - `security`: Spring Securityの設定クラス
+  - `service`: サービスクラス
+- `src/main/resources/static`: 静的ファイル（CSS、JavaScript、画像など）
+- `src/main/resources/templates`: HTMLテンプレート
+- `src/main/webapp/WEB-INF`: ビューのコンテナ設定
+- `src/test/java/com.example.blog`: テストコード
+- `pom.xml`: Mavenプロジェクトの設定ファイル
 
-## Usage
-1. Access the frontend URL.
-2. Sign up for an account or log in.
-3. Create a blog post.
-4. View your blog post.
+## ライセンス
 
-## License
-This project is licensed under the MIT License - see the `LICENSE` file for details.
+このソフトウェアはMITライセンスのもとで公開されています。詳細については、LICENSEファイルを参照してください。
