@@ -11,47 +11,52 @@ participant EKSService
 participant GoogleOIDC
 database DynamoDB
 
-User -> CloudFront: HTTPS Request
-CloudFront -> ALB: HTTPS Request
-ALB -> APIGateway: HTTP Request
-APIGateway -> Cognito: HTTPS Request
-Cognito -> GoogleOIDC: OIDC Request
-GoogleOIDC -> Cognito: OIDC Response
-Cognito -> APIGateway: HTTPS Response
+User->CloudFront: HTTPS Request
+CloudFront->ALB: HTTPS Request
+ALB->APIGateway: HTTP Request
+APIGateway->Cognito: HTTPS Request
+Cognito->GoogleOIDC: OIDC Request
+GoogleOIDC->Cognito: OIDC Response
+Cognito->APIGateway: HTTPS Response
 
 activate User
-APIGateway -> DynamoDB: Read Token
-alt Token is valid
-    alt Session is valid
-        DynamoDB -> IngressController: HTTP Request with Token
-        deactivate User
-        IngressController -> EKSService: HTTP Request with Token
-        EKSService -> IngressController: HTTP Response
-        activate User
-        IngressController -> APIGateway: HTTP Response
-        APIGateway -> ALB: HTTP Response
-        ALB -> CloudFront: HTTP Response
-        CloudFront -> User: HTTPS Response
-    else Session is expired
-        DynamoDB -> APIGateway: Delete Token
-        deactivate User
-        APIGateway -> Cognito: HTTPS Request
-        Cognito -> GoogleOIDC: OIDC Request
-        GoogleOIDC -> Cognito: OIDC Response
-        Cognito -> APIGateway: HTTPS Response
-        APIGateway -> CloudFront: Redirect to Login Page
-        CloudFront -> User: HTTPS Response
+APIGateway->DynamoDB: Read Token
+    alt Token is valid
+        alt Session is valid
+            APIGateway->IngressController: HTTP Request with Token
+            IngressController->EKSService: HTTP Request with Token
+            EKSService->IngressController: HTTP Response
+            IngressController->APIGateway: HTTP Response
+            APIGateway->ALB: HTTP Response
+            ALB->CloudFront: HTTP Response
+            CloudFront->User: HTTPS Response
+        else Session is expired
+            APIGateway->DynamoDB: Delete Token
+            DynamoDB->APIGateway: Token Deleted
+            APIGateway->Cognito: HTTPS Request
+            Cognito->GoogleOIDC: OIDC Request
+            GoogleOIDC->Cognito: OIDC Response
+            Cognito->APIGateway: HTTPS Response
+            APIGateway->CloudFront: Redirect to Login Page
+            CloudFront->User: HTTPS Response
+        end
+    else Token is expired
+        APIGateway->DynamoDB: Delete Token
+        DynamoDB->APIGateway: Token Deleted
+        APIGateway->Cognito: HTTPS Request
+        Cognito->GoogleOIDC: OIDC Request
+        GoogleOIDC->Cognito: OIDC Response
+        Cognito->APIGateway: HTTPS Response
+        APIGateway->DynamoDB: Write Token
+        DynamoDB->APIGateway: Token Written
+        alt Session is valid
+            APIGateway->ALB: HTTP Response
+            ALB->CloudFront: HTTP Response
+            CloudFront->User: HTTPS Response
+        else Session is expired
+            APIGateway->CloudFront: Redirect to Login Page
+            CloudFront->User: HTTPS Response
+        end
     end
-else Token is expired
-    DynamoDB -> APIGateway: Delete Token
-    deactivate User
-    APIGateway -> Cognito: HTTPS Request
-    Cognito -> GoogleOIDC: OIDC Request
-    GoogleOIDC -> Cognito: OIDC Response
-    Cognito -> APIGateway: HTTPS Response
-    APIGateway -> DynamoDB: Write Token
-    DynamoDB -->> APIGateway: OK
-    APIGateway -> CloudFront: Redirect to Login Page
-    CloudFront -> User: HTTPS Response
-end
+deactivate User
 @enduml
