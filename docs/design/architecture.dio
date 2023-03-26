@@ -1,11 +1,13 @@
 <mxfile host="65bd71144e">
     <diagram id="64ksvm-zJ8tlnI0QwUO_" name="Page-1">
-        <mxGraphModel dx="553" dy="358" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="900" dy="643" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
-                <mxCell id="4" value="" style="edgeStyle=none;html=1;" parent="1" source="2" target="3" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
+                <mxCell id="4" value="HTTPS" style="edgeStyle=none;html=1;" parent="1" source="2" target="3" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
                 </mxCell>
                 <mxCell id="2" value="S3" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry y="150" width="120" height="60" as="geometry"/>
@@ -16,27 +18,14 @@
                 <mxCell id="3" value="CloudFront" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="210" y="150" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="19" value="HTTP" style="edgeStyle=none;html=1;" parent="1" source="5" target="18" edge="1">
+                <mxCell id="19" value="HTTPS" style="edgeStyle=none;html=1;" parent="1" source="5" target="18" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="5" value="ALB" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                <mxCell id="5" value="Front ALB" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="410" y="150" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="10" value="" style="edgeStyle=none;html=1;" parent="1" source="7" target="9" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
-                </mxCell>
-                <mxCell id="12" value="" style="edgeStyle=none;html=1;" parent="1" source="7" target="11" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
-                </mxCell>
-                <mxCell id="36" style="edgeStyle=none;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="7" target="23" edge="1">
+                <mxCell id="12" value="JDBC via VPC endpoint" style="edgeStyle=none;html=1;" parent="1" source="7" target="11" edge="1">
                     <mxGeometry relative="1" as="geometry">
-                        <Array as="points">
-                            <mxPoint x="720" y="560"/>
-                        </Array>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="37" value="HTTPS" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="36" vertex="1" connectable="0">
-                    <mxGeometry x="0.3122" y="-2" relative="1" as="geometry">
                         <mxPoint as="offset"/>
                     </mxGeometry>
                 </mxCell>
@@ -44,52 +33,52 @@
                     <mxGeometry x="410" y="530" width="120" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="9" value="DynamoDB" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="240" y="640" width="120" height="60" as="geometry"/>
+                    <mxGeometry x="200" y="410" width="120" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="11" value="RDS" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="540" y="640" width="120" height="60" as="geometry"/>
+                    <mxGeometry x="410" y="645" width="120" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="14" style="edgeStyle=none;html=1;" parent="1" source="13" target="3" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="29" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="13" target="28" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
-                </mxCell>
                 <mxCell id="13" value="エンドユーザー" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="1" vertex="1">
-                    <mxGeometry x="255" y="30" width="30" height="60" as="geometry"/>
+                    <mxGeometry x="255" width="30" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="16" value="セッション管理" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-                    <mxGeometry x="250" y="710" width="100" height="30" as="geometry"/>
+                    <mxGeometry x="210" y="490" width="100" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="24" value="" style="edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="18" target="23" edge="1">
+                <mxCell id="24" value="OIDC&lt;br&gt;HTTPS" style="edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="18" target="23" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
                             <mxPoint x="580" y="310"/>
                         </Array>
+                        <mxPoint as="offset"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="34" value="HTTP" style="edgeStyle=none;html=1;" parent="1" source="18" target="33" edge="1">
+                <mxCell id="34" value="HTTPS" style="edgeStyle=none;html=1;" parent="1" source="18" target="33" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="40" value="HTTPS" style="edgeStyle=none;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="18" target="39">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="18" value="API Gateway" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="410" y="280" width="120" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="22" value="ユーザ情報&lt;br&gt;ブログデータ" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
-                    <mxGeometry x="550" y="705" width="100" height="40" as="geometry"/>
+                    <mxGeometry x="420" y="705" width="100" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="23" value="Cognito" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="660" y="280" width="120" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="25" value="SPA" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-                    <mxGeometry x="40" y="220" width="100" height="30" as="geometry"/>
+                    <mxGeometry x="10" y="220" width="100" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="26" value="会員制ブログAP" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-                    <mxGeometry x="285" y="545" width="100" height="30" as="geometry"/>
+                    <mxGeometry x="540" y="545" width="100" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="27" value="OIDC" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
-                    <mxGeometry x="570" y="280" width="50" height="30" as="geometry"/>
-                </mxCell>
-                <mxCell id="31" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="28" target="23" edge="1">
+                <mxCell id="31" value="HTTPS" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="28" target="23" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="28" value="Google&lt;br&gt;アカウント" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
@@ -98,11 +87,25 @@
                 <mxCell id="32" value="フェデレーション認証" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
                     <mxGeometry x="720" y="160" width="140" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="35" value="" style="edgeStyle=none;html=1;" parent="1" source="33" target="7" edge="1">
+                <mxCell id="35" value="HTTPS" style="edgeStyle=none;html=1;" parent="1" source="33" target="7" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="33" value="ALB&lt;br&gt;(Ingress controller)" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                <mxCell id="33" value="Backend ALB" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="410" y="400" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="37" value="WAF&lt;br&gt;TLS終端&lt;br&gt;流量制御" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="530" y="150" width="70" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="38" value="ロードバランシング&lt;br&gt;流量制御" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="540" y="410" width="130" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="41" value="via VPC endpoint" style="edgeStyle=none;html=1;" edge="1" parent="1" source="39" target="9">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="39" value="Lambda" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="200" y="280" width="120" height="60" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
