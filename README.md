@@ -4,7 +4,7 @@
 
 会員限定のブログ投稿システムです。会員登録することで記事の閲覧と投稿ができます。
 
-# 機能
+## 機能
 
 ### 記事関連
 
@@ -23,14 +23,11 @@
 
 ### 認証関連
 
-- ユーザーの登録
-  - ユーザー名、メールアドレス、パスワードを入力してユーザー登録が可能
-- ログイン
-  - メールアドレス、パスワードを入力してログインが可能
-- ログアウト
-  - ログアウトが可能
-- ユーザー情報の編集
-  - 登録したユーザー情報の編集が可能
+- CognitoとGoogle Authを利用してOIDCでフェデレーション認証する
+- 認証後、ユーザー登録が可能
+- ログインしている場合は、投稿の作成、編集、削除が可能
+- ログインしていない場合は、投稿の閲覧のみ可能
+- ログアウトが可能
 
 ### その他
 
@@ -41,13 +38,26 @@
 
 ## 技術スタック
 
-- Java 17
-- Spring Boot 2.6.3
-- Spring Security
-- Thymeleaf
-- PostgreSQL
-- Maven
-- Git
+- フロントエンド
+  - React
+  - S3
+  - CloudFront
+  - API Gateway
+  - Lambda
+
+- バックエンド
+  - Spring Boot
+  - AWS Lambda
+  - EKS
+
+- データベース
+  - Amazon DynamoDB
+  - Amazon RDS
+
+- 認証
+  - Amazon Cognito
+  - Google Auth
+  - OpenID Connect
 
 ## ディレクトリ構成
 ```
